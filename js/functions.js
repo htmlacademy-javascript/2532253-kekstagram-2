@@ -1,19 +1,19 @@
-function checkLength (string, length) {
-  if (string.length <= length){
-    return true;
-  } else {
-    return false;
-  }
-}
-checkLength();
+// function checkLength (string, length) {
+//   if (string.length <= length){
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+// checkLength();
 
 
-const isPalindrome = (string) => {
-  string = string.replaceAll(' ','').toLowerCase();
+// const isPalindrome = (string) => {
+//   string = string.replaceAll(' ','').toLowerCase();
 
-  const reversedLine = '';
-  for(let i = string.length - 1; i >= 0; i--) {
-    reversedLine += string[i];
-  }
-  return string === reversedLine;
-};
+//   const reversedLine = '';
+//   for(let i = string.length - 1; i >= 0; i--) {
+//     reversedLine += string[i];
+//   }
+//   return string === reversedLine;
+// };
