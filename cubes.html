@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      margin: 100px auto 0;
+      width: 900px;
+      background-color: antiquewhite;
+    }
+
+    .list {
+      padding: 30px 0;
+      margin: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .item {
+      width: 150px;
+      height: 150px;
+      background-color: red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <ul class="list">
+      <!-- <li class="item"></li>
+            <li class="item"></li> -->
+    </ul>
+  </div>
+  <script>
+    const colors = ['red', 'blue', 'white', 'violet', 'brown', 'green', 'black', 'pink', 'yellow', 'orange'];
+    const list = document.querySelector('.list');
+    colors.forEach((item) => {
+      const li = document.createElement('li');
+      li.classList.add('item');
+      li.style.background = item;
+      li.textContent = item;
+      list.append(li);
+    });
+  </script>
+</body>
+
+</html>

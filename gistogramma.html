@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      margin: 200px auto 0;
+      width: 800px;
+      background-color: gray;
+      padding: 20px;
+    }
+
+    .list {
+      padding: 50px 0 0;
+      margin: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+       align-items: flex-end;
+      justify-content: start;
+    }
+
+    .item {
+      width: 50px;
+      height: 250px;
+      background-color: violet;
+      display: flex;
+      justify-content: space-between;
+     
+    }
+
+    .ground {
+      width: 100%;
+      height: 3px;
+      background-color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <ul class="list">
+      <!-- <li class="item"></li>
+      <li class="item"></li>
+      <li class="item"></li>
+      <li class="item"></li>
+      <li class="item"></li> -->
+    </ul>
+    <div class="ground"></div>
+  </div>
+  <script>
+    // const number = [100, 200, 350, 500, 60];
+    // const ground = document.querySelector('.ground');
+    // number.forEach((item) => {
+    //   const li = document.createElement('value')
+    // });
+
+
+    //   ground.append(li);
+    // });
+
+    const data = [
+{
+      month: 'january',
+      color: 'red',
+      value: 150
+},
+{
+      month: 'february',
+      color: 'blue',
+      value: 90
+},
+ {
+      month: 'march',
+      color: 'red',
+      value: 120
+},   
+{
+      month: 'april',
+      color: 'red',
+      value: 40
+}, 
+ {
+      month: 'may',
+      color: 'red',
+      value: 100,
+},  
+ {
+      month: 'june',
+      color: 'red',
+      value: 40
+},   
+
+    ];
+    // 'violet', 'pink', 'yellow', 'blue', 'darkgrey';
+
+    const list = document.querySelector('.list');
+    data.forEach((item) => {
+      const li = document.createElement('li');
+      li.classList.add('item');
+      li.style.background = item.color;
+      li.style.height = `${item.value}px`;
+      li.textContent = item.month;
+      list.append(li);
+    });
+
+  </script>
+</body>
+
+</html>
