@@ -1,3 +1,4 @@
+
 // function checkLength (string, length) {
 //   if (string.length <= length){
 //     return true;
@@ -6,6 +7,7 @@
 //   }
 // }
 // checkLength();
+
 
 
 // const isPalindrome = (string) => {
