@@ -7,6 +7,7 @@ export const MAX_COMMENTS_ID = 10000;
 export const MIN_COMMENTS_ID = 100;
 export const MIN_AVATAR = 1;
 export const MAX_AVATAR = 6;
+export const COMMENT_STEP = 5;
 export const MESSAGES = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.!',
