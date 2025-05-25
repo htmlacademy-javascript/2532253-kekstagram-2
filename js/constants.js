@@ -1,3 +1,6 @@
+export const MAX_DESCRIPTION = 5;
+export const HASHTAG_FORMULA = /^#[a-zA-Zа-яА-Я0-9]{1,19}$/;
+export const HASHTAGS_MAX = 5;
 export const PHOTOS_COUNT = 25;
 export const MIN_LIKES = 15;
 export const MAX_LIKES = 200;
