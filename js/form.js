@@ -1,4 +1,6 @@
-import { isValid } from './validation.js';
+import { isValid, reset as resetValidation } from './validation.js';
+import {reset as resetScale} from './scale.js';
+import {reset as resetEffects} from'./effects.js';
 
 const formTag = document.querySelector('.img-upload__form');
 const uploadFileTag = document.querySelector('#upload-file');
@@ -26,11 +28,23 @@ uploadFileTag.addEventListener('change', () => {
 
 });
 
-closeButtonTag.addEventListener('click', () => {
+const closeForm = () => {
+  formTag.reset();
+  resetScale();
+  resetValidation();
+  resetEffects();
   showForm(false);
+};
+
+closeButtonTag.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  closeForm();
 });
 
-formTag.addEventListener('submit', () => {
-
+formTag.addEventListener('submit', (evt) => {
+  if (!isValid()) {
+    evt.preventDefault();
+  }
 });
+
 
