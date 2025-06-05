@@ -1,6 +1,13 @@
-import { createPhotos } from './data.js';
+// import { createPhotos } from './data.js';
 import { renderCards } from './thumbnails.js';
 import './form.js';
+import { showErrorAlert } from './util.js';
+import { getData } from './api.js';
 
-const photos = createPhotos();
-renderCards(photos);
+getData()
+  .then((photos) => {
+    renderCards(photos);
+  })
+  .catch(() => {
+    showErrorAlert();
+  });
