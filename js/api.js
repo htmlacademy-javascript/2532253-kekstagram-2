@@ -1,7 +1,7 @@
-import { DATAKEKS, DATAKEKSPRO } from './constants.js';
+import { GET_RECIPIENT, POST_RECIPIENT } from './constants.js';
 
 export const getData = () =>
-  fetch(DATAKEKS)
+  fetch(GET_RECIPIENT)
     .then((response) => {
       if (!response.ok) {
         throw new Error ();
@@ -9,7 +9,7 @@ export const getData = () =>
       return response.json();
     });
 
-export const sendData = (body) => fetch(DATAKEKSPRO, {
+export const sendData = (body) => fetch(POST_RECIPIENT, {
   method: 'POST',
   body
 });

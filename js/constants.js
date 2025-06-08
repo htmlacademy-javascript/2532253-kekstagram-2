@@ -1,5 +1,13 @@
-export const DATAKEKS = 'https://31.javascript.htmlacademy.pro/kekstagram/data';
-export const DATAKEKSPRO = 'https://31.javascript.htmlacademy.pro/kekstagram/';
+export const RANDOM_FACTOR = 0.5;
+
+export const Filters = {
+  DEFAULT: 'filter-default',
+  RANDOM: 'filter-random',
+  DISCUSSED: 'filter-discussed'
+};
+
+export const GET_RECIPIENT = 'https://31.javascript.htmlacademy.pro/kekstagram/data';
+export const POST_RECIPIENT = 'https://31.javascript.htmlacademy.pro/kekstagram/';
 
 export const SendButtonText = {
   IDLE: 'Опубликовать',
