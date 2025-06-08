@@ -4,6 +4,7 @@ import { reset as resetEffects } from './effects.js';
 import { showPopup } from './popup.js';
 import { Popups, SendButtonText } from './constants.js';
 import { sendData } from './api.js';
+import { removeEscapeControl, setEscapeControl } from './escape-control.js';
 
 const formTag = document.querySelector('.img-upload__form');
 const uploadFileTag = document.querySelector('#upload-file');
@@ -11,6 +12,9 @@ const uploadModalTag = document.querySelector('.img-upload__overlay');
 const closeButtonTag = document.querySelector('#upload-cancel');
 const imageTag = document.querySelector('.img-upload__preview img');
 const sendButton = document.querySelector('.img-upload__submit');
+const descriptionTag = document.querySelector('.text__description');
+const hashtagsTag = document.querySelector('.text__hashtags');
+const radiosPreviewTags = document.querySelectorAll('.effects__preview');
 
 const body = document.body;
 
@@ -24,14 +28,6 @@ const showForm = (isShow = true) => {
   }
 };
 
-uploadFileTag.addEventListener('change', () => {
-  const fileImage = uploadFileTag.files[0];
-  const imageURL = URL.createObjectURL(fileImage);
-  imageTag.src = imageURL;
-  showForm();
-
-});
-
 const closeForm = () => {
   formTag.reset();
   resetScale();
@@ -40,9 +36,24 @@ const closeForm = () => {
   showForm(false);
 };
 
+const canCloseForm = () => !(document.activeElement === hashtagsTag || document.activeElement === descriptionTag);
+
+uploadFileTag.addEventListener('change', () => {
+  const fileImage = uploadFileTag.files[0];
+  const imageURL = URL.createObjectURL(fileImage);
+  imageTag.src = imageURL;
+  radiosPreviewTags.forEach((item) => {
+    item.style.backgroundImage = `url("${imageURL}")`;
+  });
+
+  showForm();
+  setEscapeControl(closeForm, canCloseForm);
+});
+
 closeButtonTag.addEventListener('click', (evt) => {
   evt.preventDefault();
   closeForm();
+  removeEscapeControl();
 });
 
 const blockButton = (isBlocked = true) => {
@@ -62,6 +73,7 @@ formTag.addEventListener('submit', (evt) => {
           throw new Error();
         }
         closeForm();
+        removeEscapeControl();
         showPopup(Popups.SUCCESS);
       })
       .catch(() => {

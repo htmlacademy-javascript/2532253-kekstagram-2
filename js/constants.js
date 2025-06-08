@@ -110,7 +110,7 @@ export const EffectSettings = {
   }
 };
 
-export const MAX_DESCRIPTION = 5;
+export const MAX_DESCRIPTION = 140;
 export const HASHTAG_FORMULA = /^#[a-zA-Zа-яА-Я0-9]{1,19}$/;
 export const HASHTAGS_MAX = 5;
 export const COMMENT_STEP = 5;
