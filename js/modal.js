@@ -1,4 +1,6 @@
-import {COMMENT_STEP} from './constants.js';
+import { COMMENT_STEP } from './constants.js';
+import { removeEscapeControl, setEscapeControl } from './escape-control.js';
+
 const modalTag = document.querySelector('.big-picture');
 const imageTag = modalTag.querySelector('.big-picture__img img');
 const closeButton = modalTag.querySelector('#picture-cancel');
@@ -29,9 +31,9 @@ const renderStatistic = () => {
 };
 
 const renderLoader = () => {
-  if (localComments.length){
+  if (localComments.length) {
     loaderCommentsTag.classList.remove('hidden');
-  }else {
+  } else {
     loaderCommentsTag.classList.add('hidden');
   }
 
@@ -39,7 +41,7 @@ const renderLoader = () => {
 
 const renderComments = () => {
   const fragment = document.createDocumentFragment();
-  localComments.splice(0, COMMENT_STEP).forEach(({avatar, message, name}) => {
+  localComments.splice(0, COMMENT_STEP).forEach(({ avatar, message, name }) => {
     const newComment = commentTemplate.cloneNode(true);
     const image = newComment.querySelector('.social__picture');
     image.src = avatar;
@@ -65,13 +67,19 @@ const renderModal = ({ url, description, likes, comments }) => {
   renderComments();
 };
 
+const closeModal = () => {
+  showModal(false);
+};
+
 export const openModal = (photo) => {
   renderModal(photo);
   showModal();
+  setEscapeControl(closeModal);
 };
 
 closeButton.addEventListener('click', () => {
-  showModal(false);
+  closeModal();
+  removeEscapeControl();
 });
 
 loaderCommentsTag.addEventListener('click', () => {

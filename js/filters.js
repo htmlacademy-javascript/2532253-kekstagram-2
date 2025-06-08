@@ -15,8 +15,8 @@ export const initFilters = (pictures) => {
 };
 
 const setActiveButton = (activeButton) => {
-  document.querySelector('.img-filters__button--active').classList.remove('.img-filters__button--active');
-  activeButton.classList.add('.img-filters__button--active');
+  document.querySelector('.img-filters__button--active').classList.remove('img-filters__button--active');
+  activeButton.classList.add('img-filters__button--active');
 };
 
 const filterAction = {

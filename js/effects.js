@@ -1,4 +1,4 @@
-import {Effects, EffectSettings} from './constants.js';
+import { Effects, EffectSettings } from './constants.js';
 const inputTag = document.querySelector('.effect-level__value');
 const sliderElementTag = document.querySelector('.effect-level__slider');
 const effectsContainerTag = document.querySelector('.effects');
@@ -13,10 +13,18 @@ noUiSlider.create(sliderElementTag, {
     max: 100,
   },
   start: 80,
+  format: {
+    to: function (value) {
+      return parseFloat(value);
+    },
+    from: function (value) {
+      return parseFloat(value);
+    },
+  },
   connect: 'lower',
 });
 const renderEffect = () => {
-  const {style, units} = EffectSettings [currentEffect];
+  const { style, units } = EffectSettings[currentEffect];
   imageTag.style.filter = currentEffect === Effects.DEFAULT ? '' :
     `${style}(${inputTag.value}${units})`;
 };
@@ -27,14 +35,14 @@ sliderElementTag.noUiSlider.on('update', () => {
 });
 
 const updateSlider = () => {
-  const {slider} = EffectSettings [currentEffect];
-  sliderElementTag.noUiSlider.updateOptions({...slider});
+  const { slider } = EffectSettings[currentEffect];
+  sliderElementTag.noUiSlider.updateOptions({ ...slider });
 };
 
 const showSlider = (isShown = true) => {
   if (isShown) {
     sliderContainerTag.classList.remove('hidden');
-  }else {
+  } else {
     sliderContainerTag.classList.add('hidden');
   }
 };
@@ -44,7 +52,7 @@ const renderSlider = () => {
   showSlider(currentEffect !== Effects.DEFAULT);
 };
 
-effectsContainerTag.addEventListener('change', ({target}) => {
+effectsContainerTag.addEventListener('change', ({ target }) => {
   currentEffect = target.value;
   renderSlider();
 });
