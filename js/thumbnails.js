@@ -5,7 +5,14 @@ const containerTag = document.querySelector('.pictures');
 
 let localPhotos;
 
+const clear = () =>{
+  document.querySelectorAll('.picture').forEach((item) => {
+    item.remove();
+  });
+};
+
 export const renderCards = (pictures) => {
+  clear();
   localPhotos = [...pictures];
   const fragment = document.createDocumentFragment();
   pictures.forEach((item) => {
@@ -16,10 +23,6 @@ export const renderCards = (pictures) => {
     thumbnail.querySelector('.picture__comments').textContent = item.comments.length;
     thumbnail.querySelector('.picture__likes').textContent = item.likes;
     thumbnail.dataset.id = item.id;
-
-    // thumbnail.addEventListener('click', () => {
-    //   openModal(item);
-    // });
 
     fragment.appendChild(thumbnail);
   });

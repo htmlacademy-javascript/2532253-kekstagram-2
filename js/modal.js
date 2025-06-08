@@ -66,7 +66,6 @@ const renderModal = ({ url, description, likes, comments }) => {
 };
 
 export const openModal = (photo) => {
-  console.log(photo);
   renderModal(photo);
   showModal();
 };
