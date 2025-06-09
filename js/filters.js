@@ -1,15 +1,15 @@
 import { Filters, RANDOM_FACTOR } from './constants.js';
 import {renderCards} from './thumbnails.js';
-import { debounce } from './util.js';
+import { expose } from './util.js';
 
 const filtersTag = document.querySelector('.img-filters');
 const filterFormTag = document.querySelector('.img-filters__form');
 
 let localPhotos;
 
-const debouncedRanderCards = debounce(renderCards);
+const debouncedRanderCards = expose(renderCards);
 
-export const initFilters = (pictures) => {
+export const getFilters = (pictures) => {
   localPhotos = [...pictures];
   filtersTag.classList.remove('img-filters--inactive');
 };
