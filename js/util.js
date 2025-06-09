@@ -11,7 +11,7 @@ export const showErrorAlert = () => {
   }, DELAY);
 };
 
-export const debounce = (callback, timeoutDelay = 500) => {
+export const expose = (callback, timeoutDelay = 500) => {
   let timeoutId;
   return (...rest) => {
     clearTimeout(timeoutId);

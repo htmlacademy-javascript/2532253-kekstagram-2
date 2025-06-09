@@ -1,7 +1,7 @@
 const windows = [];
 let listener = null;
 
-const onDocumentKeydown = ({ key }) => {
+const checkKeydown = ({ key }) => {
   if (key === 'Escape') {
     const lastIndex = windows.length - 1;
     if (windows[lastIndex].condition && !windows[lastIndex].condition()) {
@@ -10,7 +10,7 @@ const onDocumentKeydown = ({ key }) => {
     windows[lastIndex].closeFunction();
     windows.length -= 1;
     if (!windows.length) {
-      document.removeEventListener('keydown', onDocumentKeydown);
+      document.removeEventListener('keydown', checkKeydown);
       listener = null;
     }
   }
@@ -22,14 +22,14 @@ export const setEscapeControl = (closeFunction, condition = null) => {
     condition
   });
   if (!listener) {
-    document.addEventListener('keydown', onDocumentKeydown);
+    document.addEventListener('keydown', checkKeydown);
   }
 };
 
 export const removeEscapeControl = () => {
   windows.length -= 1;
   if (!windows.length) {
-    document.removeEventListener('keydown', onDocumentKeydown);
+    document.removeEventListener('keydown', checkKeydown);
     listener = null;
   }
 };
